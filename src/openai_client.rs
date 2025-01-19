@@ -5,25 +5,25 @@ use serenity::json::json;
 use std::env;
 
 #[derive(Deserialize, Debug)]
-pub struct OpenAIResponse {
+pub struct OpenAIQuizResponse {
     pub id: String,
-    pub choices: Vec<OpenAIResponseChoices>,
+    pub choices: Vec<OpenAIQuizResponseChoices>,
 }
 
 #[derive(Deserialize, Debug)]
-pub struct OpenAIResponseChoices {
-    pub message: OpenAIResponseMessage,
+pub struct OpenAIQuizResponseChoices {
+    pub message: OpenAIQuizResponseMessage,
 }
 
 #[derive(Deserialize, Debug)]
-pub struct OpenAIResponseMessage {
+pub struct OpenAIQuizResponseMessage {
     pub role: String,
     pub content: String,
 }
 
 pub async fn generate_quiz(
     difficulty: String,
-) -> Result<OpenAIResponse, Box<dyn std::error::Error>> {
+) -> Result<OpenAIQuizResponse, Box<dyn std::error::Error>> {
     let api_key =
         env::var("OPENAI_API_KEY").expect("Expected an OpenAI API key in the environment");
 
@@ -83,7 +83,7 @@ pub async fn generate_quiz(
         }))
         .send()
         .await?
-        .json::<OpenAIResponse>()
+        .json::<OpenAIQuizResponse>()
         .await?;
 
     Ok(response)

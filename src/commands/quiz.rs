@@ -3,7 +3,8 @@ use serenity::all::ResolvedValue;
 use serenity::{all::CreateCommandOption, builder::CreateCommand};
 use serenity::model::application::ResolvedOption;
 
-use crate::QuizDifficulty;
+use crate::interactions::interaction_handlers::QuizDifficulty;
+
 
 pub fn run(options: &[ResolvedOption]) -> Result<String, String> {
     if let Some(ResolvedOption {
