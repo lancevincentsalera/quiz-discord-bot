@@ -10,7 +10,7 @@ use serenity::model::gateway::Ready;
 use serenity::prelude::*;
 
 mod commands;
-mod openai_client;
+mod openai_quiz_client;
 mod quiz_manager;
 mod interactions;
 

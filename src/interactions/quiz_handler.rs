@@ -10,7 +10,7 @@ use serenity::{
 
 use crate::{
     commands::quiz,
-    openai_client::generate_quiz,
+    openai_quiz_client::generate_quiz,
     quiz_manager::{QuizManager, QuizQuestion},
 };
 
